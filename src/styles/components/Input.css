@@ -1,0 +1,74 @@
+.customInputNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input {
+    height: 48px;
+    width: 48px;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid black;
+    margin: 0 8px;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  input:disabled {
+    border: 1px solid gray;
+  }
+
+  .box {
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid blue;
+    background: linear-gradient(blue 0 0), linear-gradient(blue 0 0);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .disabled {
+    border: 1px solid gray;
+    background: linear-gradient(gray 0 0), linear-gradient(gray 0 0);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .subtraction {
+    background-size: 50% 2px;
+  }
+
+  .subtraction:active {
+    border: 1px solid gray;
+    background: linear-gradient(gray 0 0), linear-gradient(gray 0 0);
+    background-size: 50% 2px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .plus {
+    background-size:
+      50% 2px,
+      2px 50%;
+  }
+
+  .plus:active {
+    border: 1px solid gray;
+    background: linear-gradient(gray 0 0), linear-gradient(gray 0 0);
+    background-size:
+      50% 2px,
+      2px 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

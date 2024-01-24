@@ -1,0 +1,7 @@
+@import './normalize.css';
+@import './pages/index.css';
+@import './components/index.css';
+
+.root {
+  box-sizing: border-box;
+}
