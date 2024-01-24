@@ -16,7 +16,17 @@ enum EventTypeEnum {
   decrease
 }
 
-const CustomInputNumber = ({ value, step, disabled, name, max, min, onChange, onBlur }: Props) => {
+const CustomInputNumber = ({
+  value,
+  step,
+  disabled,
+  name,
+  max,
+  min,
+  onChange,
+  onBlur,
+  ...rest
+}: Props) => {
   const [intervalTimeout, setIntervalTimeout] = useState<NodeJS.Timeout | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -87,6 +97,7 @@ const CustomInputNumber = ({ value, step, disabled, name, max, min, onChange, on
         disabled={disabled}
         onBlur={onBlur}
         onChange={handleOnChange}
+        {...rest}
       />
       <button
         type="button"

@@ -7,10 +7,10 @@ interface Prop {
   onChange: (result: roomItem[]) => void;
 }
 
-const initroom = { adult: 1, child: 0 };
+const initRoom = { adult: 1, child: 0 };
 
 const RoomAllocation = ({ guest, room, onChange }: Prop) => {
-  const [rooms, setRooms] = useState<roomItem[]>(new Array(room).fill(initroom));
+  const [rooms, setRooms] = useState<roomItem[]>(new Array(room).fill(initRoom));
   const unAllocationUser = rooms.reduce((pre, cur) => {
     return pre - (cur.adult + cur.child);
   }, guest);
