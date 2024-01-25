@@ -28,7 +28,9 @@ const Room = ({ roomData, unAllocationUser, onChange }: Prop) => {
   const getMaxSize = (curr: number, other: number) => {
     if (unAllocationUser == 0) return curr;
     const currMax = roomSize - other;
-    if (unAllocationUser < roomSize && currMax > unAllocationUser) return unAllocationUser + curr;
+    if (currMax > unAllocationUser) {
+      unAllocationUser + curr > roomSize ? roomSize : unAllocationUser + curr;
+    }
     return currMax;
   };
 
