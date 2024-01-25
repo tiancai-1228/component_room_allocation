@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Room, { roomData } from './Room';
 
 interface Prop {
@@ -19,13 +19,10 @@ const RoomAllocation = ({ guest, room, onChange }: Prop) => {
     setRooms((pre) => {
       const newRoom = [...pre];
       newRoom[index] = room;
+      onChange(newRoom);
       return newRoom;
     });
   };
-
-  useEffect(() => {
-    onChange(rooms);
-  }, [rooms]);
 
   return (
     <div className="roomAllocation">
