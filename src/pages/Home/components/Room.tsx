@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { CustomInputNumber } from '../../../components';
 
-export interface roomItem {
+export interface roomData {
   adult: number;
   child: number;
 }
@@ -17,13 +17,12 @@ interface userTypes_I {
 }
 
 interface Prop {
-  roomData: roomItem;
+  roomData: roomData;
   unAllocationUser: number;
-  onChange: (val: roomItem) => void;
+  onChange: (val: roomData) => void;
 }
 
 const Room = ({ roomData, unAllocationUser, onChange }: Prop) => {
-  const [roomItem, setRoomItem] = useState<roomItem>(roomData);
   const roomSize = 4;
 
   const userTypes: userTypes_I[] = [
@@ -31,34 +30,30 @@ const Room = ({ roomData, unAllocationUser, onChange }: Prop) => {
       label: '大人',
       hint: '年齡20+',
       min: 1,
-      max: unAllocationUser == 0 ? roomItem.adult : roomSize - roomItem.child,
+      max: unAllocationUser == 0 ? roomData.adult : roomSize - roomData.child,
       name: 'adult',
-      value: roomItem.adult,
+      value: roomData.adult,
       onChange: (e) => {
-        setRoomItem((pre) => ({ ...pre, adult: parseInt(e.target.value) }));
+        onChange({ ...roomData, adult: parseInt(e.target.value) });
       }
     },
     {
       label: '小孩',
       hint: null,
       min: 0,
-      max: unAllocationUser == 0 ? roomItem.child : roomSize - roomItem.adult,
+      max: unAllocationUser == 0 ? roomData.child : roomSize - roomData.adult,
       name: 'child',
-      value: roomItem.child,
+      value: roomData.child,
       onChange: (e) => {
-        setRoomItem((pre) => ({ ...pre, child: parseInt(e.target.value) }));
+        onChange({ ...roomData, child: parseInt(e.target.value) });
       }
     }
   ];
 
-  useEffect(() => {
-    onChange(roomItem);
-  }, [roomItem]);
-
   return (
     <div className="room">
       <div className="title">
-        <p>{`房間 : ${roomItem.adult + roomItem.child} 人`}</p>
+        <p>{`房間 : ${roomData.adult + roomData.child} 人`}</p>
       </div>
 
       {userTypes.map((type) => (

@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import Room, { roomItem } from './Room';
+import Room, { roomData } from './Room';
 
 interface Prop {
   guest: number;
   room: number;
-  onChange: (result: roomItem[]) => void;
+  onChange: (result: roomData[]) => void;
 }
 
 const initRoom = { adult: 1, child: 0 };
 
 const RoomAllocation = ({ guest, room, onChange }: Prop) => {
-  const [rooms, setRooms] = useState<roomItem[]>(new Array(room).fill(initRoom));
+  const [rooms, setRooms] = useState<roomData[]>(new Array(room).fill(initRoom));
   const unAllocationUser = rooms.reduce((pre, cur) => {
     return pre - (cur.adult + cur.child);
   }, guest);
 
-  const handleChange = (room: roomItem, index: number) => {
+  const handleChange = (room: roomData, index: number) => {
     setRooms((pre) => {
       const newRoom = [...pre];
       newRoom[index] = room;

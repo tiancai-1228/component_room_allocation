@@ -4,7 +4,7 @@ import RoomAllocation from './components/RoomAllocation';
 const HomePage = () => {
   return (
     <div className="home">
-      <RoomAllocation guest={10} room={3} onChange={(result) => console.log(result)} />
+      <RoomAllocation guest={20} room={6} onChange={(result) => console.log(result)} />
     </div>
   );
 };
