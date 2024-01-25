@@ -25,12 +25,19 @@ interface Prop {
 const Room = ({ roomData, unAllocationUser, onChange }: Prop) => {
   const roomSize = 4;
 
+  const getMaxSize = (curr: number, other: number) => {
+    if (unAllocationUser == 0) return curr;
+    const currMax = roomSize - other;
+    if (unAllocationUser < 4 && currMax > unAllocationUser) return unAllocationUser + curr;
+    return currMax;
+  };
+
   const userTypes: userTypes_I[] = [
     {
       label: '大人',
       hint: '年齡20+',
       min: 1,
-      max: unAllocationUser == 0 ? roomData.adult : roomSize - roomData.child,
+      max: getMaxSize(roomData.adult, roomData.child),
       name: 'adult',
       value: roomData.adult,
       onChange: (e) => {
@@ -41,7 +48,7 @@ const Room = ({ roomData, unAllocationUser, onChange }: Prop) => {
       label: '小孩',
       hint: null,
       min: 0,
-      max: unAllocationUser == 0 ? roomData.child : roomSize - roomData.adult,
+      max: getMaxSize(roomData.child, roomData.adult),
       name: 'child',
       value: roomData.child,
       onChange: (e) => {
